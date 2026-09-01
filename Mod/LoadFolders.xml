@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+	<v1.6>
+		<!-- Racine : About seulement pour l'instant. Le contenu meteo du jeu de base
+		     reste a ecrire ; ce mod ne porte encore que les evenements de VEE. -->
+		<li>/</li>
+		<li IfModActive="vanillaexpanded.vee">VEE</li>
+	</v1.6>
+</loadFolders>

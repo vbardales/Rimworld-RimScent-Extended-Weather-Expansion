@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>RimScent Extended: Weather Expansion</name>
+	<author>nelim</author>
+	<packageId>nelim.rimscent.extended.weather</packageId>
+	<description>Weather, disasters, and the air outside.
+
+WHAT IS IN IT TODAY
+The events of Vanilla Events Expanded that reach the nose. GameConditionDef is one of the def types RimScent's own extension already accepts, and Vanilla Events Expanded never used a single one of them.
+
+- Drought: dust and dry ground, cracked earth, nothing green left to smell.
+- Heat wave: hot air carries everything with it, and none of it is pleasant.
+- Psychic bloom: something floral and wrong, too sweet to be a flower.
+
+WHAT IS COMING
+Rain and wet earth, forest and cut grass, warm mud at the water's edge, the sea, hot springs. Unwashed colonists through Dubs Bad Hygiene — a pawn who does not wash smells, unlike an animal, which does. Pheromones, which nobody notices consciously and everybody notices. Illness on the breath.
+
+This is the thinnest of the RimScent Extended family today, and the one with the most room to grow.
+
+Ships in English with a French translation injected on top. Vanilla Events Expanded support loads only if that mod is active. No save data.
+
+Requires RimScent and RimScent Extended.</description>
+	<modVersion>0.1.0</modVersion>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<modDependencies>
+		<li>
+			<packageId>reo.RimScent</packageId>
+			<displayName>RimScent</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/3645569466</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>nelim.rimscent.extended</packageId>
+			<displayName>RimScent Extended</displayName>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>brrainz.harmony</li>
+		<li>Ludeon.RimWorld</li>
+		<li>reo.RimScent</li>
+		<li>nelim.rimscent.extended</li>
+		<li>vanillaexpanded.vee</li>
+	</loadAfter>
+</ModMetaData>
