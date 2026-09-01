@@ -1,117 +1,112 @@
 # RimScent Extended: Weather Expansion
 
-L'air du dehors, et le sol sur lequel il repose. RimWorld 1.6.
+The air outside, and the ground it rests on. For RimWorld 1.6.
 
-## Le sol — un terrain neuf pour RimScent
+## Terrain — new ground for RimScent
 
-RimScent ne lit que le `thingGrid` : des objets posés sur des cases. **Le terrain n'est pas
-un objet** — l'eau, la vase, le sable et la glace n'ont pas de `ThingDef` — donc rien de ce
-qui fait l'odeur d'un lieu n'était accessible.
+RimScent only reads the `thingGrid`: things sitting on cells. **Terrain is not a thing** — water,
+marsh, sand and ice have no `ThingDef` — so none of what makes a place smell the way it does was
+reachable.
 
-Le socle a gagné `ModExtension_TerrainScent` pour ça, et `ScentScan` lit la grille de
-terrain sur les mêmes cases qu'il parcourt déjà : un accès indexé, aucun coût de parcours
-supplémentaire.
+The socle gained `ModExtension_TerrainScent` for this, and `ScentScan` reads the terrain grid on
+the same cells it already walks: an indexed lookup, with no extra traversal cost.
 
-| Terrain | Odeur | Humeur |
+| Terrain | Smell | Mood |
 |---|---|---|
-| eau douce (rivière, lac, crue) | eau fraîche et pierre mouillée | +1 |
-| océan | sel, iode, grand large | +2 |
-| vase, marécage, boue | eau stagnante, soufrée et douceâtre | −3 |
-| source chaude (Odyssey), geyser | vapeur minérale, soufre et fer | +3 |
-| eaux toxiques (Odyssey) | **réutilise** `RimScent_ToxicScent` | |
-| lave (Odyssey) | **réutilise** `RimScent_AshScent` | |
-| sol moussu, sol de forêt-lueur | même odeur que les arbres | +2 |
+| fresh water (river, lake, flood) | cool water and wet stone | +1 |
+| ocean | salt, iodine, open sea | +2 |
+| marsh, swamp, mud | stagnant water, sulphurous and sweetish | −3 |
+| hot spring (Odyssey), geyser | mineral steam, sulphur and iron | +3 |
+| toxic water (Odyssey) | **reuses** `RimScent_ToxicScent` | |
+| lava (Odyssey) | **reuses** `RimScent_AshScent` | |
+| mossy ground, glowforest floor | the same smell as the trees | +2 |
 
-**La vase ne sent qu'au-dessus de 18 °C.** C'est la température qui fait l'odeur d'un
-marécage, pas le marécage. En dessous du seuil, la case ne compte pas du tout — ce qui est
-distinct du facteur de température global du socle : celui-là atténue une odeur présente,
-celui-ci décide qu'elle n'existe pas.
+**Marsh only smells above 18 °C.** It is the temperature that makes a swamp smell, not the swamp.
+Below the threshold the cell does not count at all — which is distinct from the socle's global
+temperature factor: that one damps a smell that is present, this one decides it does not exist.
 
-### Le comptage par case
+### Counting per cell
 
-Le terrain est compté **par case**, contrairement à la météo qui est lue une fois pour toute
-la carte. Trois cases d'eau au bord d'un ruisseau ne sentent pas comme un marécage à perte
-de vue, et le `stackLimit` de la pensée plafonne le total. Le nombre de cases devient donc
-une mesure de « combien il y en a autour de toi », gratuitement.
+Terrain is counted **per cell**, unlike weather, which is read once for the whole map. Three water
+cells at the edge of a stream do not smell like a swamp stretching to the horizon, and the
+thought's `stackLimit` caps the total. The cell count therefore becomes a measure of "how much of
+it is around you", for free.
 
-## La forêt
+## The forest
 
-Tous les arbres, par le marqueur **`plant/treeCategory`** que le jeu utilise déjà pour
-distinguer un arbre d'une plante — pas par une liste écrite à la main. Les opérations de
-patch s'appliquant au XML brut, avant la résolution de l'héritage, viser `TreeBase` suffit
-et couvre tous ses enfants d'un coup, mods compris. Un mod qui déclare son propre parent
-d'arbres est attrapé par le même xpath sans être nommé.
+Every tree, through the **`plant/treeCategory`** marker the game already uses to tell a tree from
+a plant — not through a hand-written list. Since patch operations apply to raw XML, before
+inheritance is resolved, targeting `TreeBase` is enough and covers all its children at once, mods
+included. A mod that declares its own tree parent is caught by the same xpath without being named.
 
-**Six arbres sont exclus nommément**, parce qu'ils déclarent chacun leur propre
-`treeCategory` au lieu d'hériter de `TreeBase`, et qu'aucun ne sent la forêt : l'anima et le
-gauranlen ont une présence à eux, le polux et l'archéen sont des artefacts, le harbinger
-d'Anomaly est une horreur, et le bonsaï est un objet de décoration d'intérieur.
+**Six trees are excluded by name**, because each declares its own `treeCategory` instead of
+inheriting from `TreeBase`, and none of them smells of forest: the anima and gauranlen trees have
+a presence of their own, the polux and archean are artefacts, Anomaly's harbinger is a horror, and
+the bonsai is a piece of indoor decoration.
 
-### La limite du procédé, assumée
+### The limit of the approach, accepted
 
-Déclarer son propre `treeCategory` plutôt que d'hériter de `TreeBase` est courant côté mods :
-sur les mods installés ici, une soixantaine de fichiers le font. C'est ce qui rend le critère
-utile — ces arbres-là sont attrapés sans être nommés, et le prochain mod installé le sera
-aussi, sans mise à jour.
+Declaring your own `treeCategory` rather than inheriting from `TreeBase` is common among mods:
+across the mods installed here, some sixty files do it. That is what makes the criterion useful —
+those trees are caught without being named, and so will the next mod installed, with no update.
 
-C'est aussi la limite. **L'arbre maudit d'un mod sentira la forêt agréable**, faute de
-pouvoir l'en distinguer autrement qu'en le nommant — et nommer, c'est précisément ce que ce
-patch refuse de faire. Les six exclusions vanilla sont un cas particulier justifié par le
-fait qu'elles sont finies et connues ; il n'existe pas d'équivalent pour les mods. Si un cas
-gênant apparaît en jeu, l'exclusion se règle en ajoutant un `not(defName="…")` de plus.
+It is also the limit. **A modded cursed tree will smell of pleasant forest**, since there is no way
+to tell it apart other than by naming it — and naming is precisely what this patch refuses to do.
+The six vanilla exclusions are a special case, justified by being finite and known; there is no
+equivalent for mods. If an awkward case shows up in play, the exclusion is one more
+`not(defName="…")`.
 
-## Météo et conditions
+## Weather and conditions
 
-RimScent couvre déjà six defs : `Rain`, `Fog`, `RainyThunderstorm` et `FoggyRain` pour le
-pétrichor, `ToxicFallout` et `VolcanicWinter`. Rien ici ne les redouble.
+RimScent already covers six defs: `Rain`, `Fog`, `RainyThunderstorm` and `FoggyRain` for
+petrichor, plus `ToxicFallout` and `VolcanicWinter`. Nothing here duplicates them.
 
-| Cible | Odeur |
+| Target | Smell |
 |---|---|
-| orage sec, tempête d'éclairs | ozone, +1 |
-| neige, blizzard, vague de froid, gel profond | air froid et pur, +1 |
-| canicule, chaleur anormale, évents de chaleur | air suffocant, −2 |
-| sécheresse (Odyssey) | air desséché, −2 |
-| spores bioluminescentes (Odyssey) | spores, −1 |
-| pluie torrentielle (Odyssey) | **réutilise** `RimScent_PetrichorScent` |
-| pluie de sang (Anomaly) | **réutilise** `RimScent_BloodScent` |
-| voile gris (Anomaly) | **réutilise** `RimScent_GrayFleshScent` |
-| brume nocive (Biotech) | **réutilise** `RimScent_ToxicScent` |
-| cendre, débris, coulée de lave (Odyssey) | **réutilise** `RimScent_AshScent`, pyromane exempté |
-| Vanilla Events Expanded | sécheresse, canicule, floraison psychique |
+| dry thunderstorm, lightning storm | ozone, +1 |
+| snow, blizzard, cold snap, deep freeze | cold clean air, +1 |
+| heat wave, unnatural heat, heat vents | stifling air, −2 |
+| drought (Odyssey) | parched air, −2 |
+| bioluminescent spores (Odyssey) | spores, −1 |
+| torrential rain (Odyssey) | **reuses** `RimScent_PetrichorScent` |
+| blood rain (Anomaly) | **reuses** `RimScent_BloodScent` |
+| grey pall (Anomaly) | **reuses** `RimScent_GrayFleshScent` |
+| noxious haze (Biotech) | **reuses** `RimScent_ToxicScent` |
+| ash, debris, lava flow (Odyssey) | **reuses** `RimScent_AshScent`, pyromaniacs exempt |
+| Vanilla Events Expanded | drought, heat wave, psychic bloom |
 
-Les valeurs restent basses : la météo et les conditions sont lues à l'échelle de la carte,
-hors boucle de cases, donc chaque odeur touche toute la colonie d'un coup.
+The values stay low: weather and conditions are read at map scale, outside the cell loop, so each
+smell hits the whole colony at once.
 
-**Aucun `MayRequire` nulle part.** Une opération conditionnelle dont le xpath ne correspond à
-rien ne fait rien et ne lève aucune erreur : les defs d'Anomaly, de Biotech et d'Odyssey sont
-visées directement, et le mod fonctionne sans eux.
+**No `MayRequire` anywhere.** A conditional operation whose xpath matches nothing does nothing and
+raises no error: the Anomaly, Biotech and Odyssey defs are targeted directly, and the mod works
+without them.
 
-Beaucoup de conditions n'ont **volontairement** aucune odeur : éclipse, éruption solaire,
-aurore, bourdonnement psychique, obscurité anormale. Le ciel qui change ne sent rien, et lui
-inventer une odeur serait du bruit.
+Many conditions **deliberately** have no smell: eclipse, solar flare, aurora, psychic drone,
+unnatural darkness. A changing sky smells of nothing, and inventing one for it would be noise.
 
-## Ce qui n'y est pas, et pourquoi
+## What is not here, and why
 
-**Les phéromones.** RimScent ne lit sur un pion voisin que ses `HediffDef`, et aucun hediff
-vanilla ne les marque. Une odeur posée sur `Human` serait simplement permanente pour toute
-colonie — exactement ce que le seuil de `ModExtension_PawnScent` existe pour éviter. Il
-faudrait un déclencheur : ce n'est pas écarté, c'est en attente d'un crochet honnête.
+**Pheromones.** On a neighbouring pawn RimScent reads only `HediffDef`s, and no vanilla hediff
+marks them. A scent put on `Human` would simply be permanent for every colony — exactly what the
+`ModExtension_PawnScent` threshold exists to avoid. It would need a trigger: not ruled out, just
+waiting for an honest hook.
 
-**Les colons qui ne se lavent pas.** Déjà couvert par RimScent lui-même, dans son volet Dubs
-Bad Hygiene (`RimScent_BadHygiene`). Rien à ajouter.
+**Colonists who do not wash.** Already covered by RimScent itself, in its Dubs Bad Hygiene section
+(`RimScent_BadHygiene`). Nothing to add.
 
-**La maladie sur l'haleine.** RimScent lit les hediffs d'un voisin : patcher les maladies
-fonctionnerait nativement, sans une ligne de code. Mais c'est de la putréfaction, pas de la
-météo — ça revient à **Decay Expansion**, qui porte déjà l'air de chambre de malade.
+**Illness on the breath.** RimScent reads a neighbour's hediffs, so patching diseases would work
+natively, without a line of code. But that is decay, not weather — it belongs to **Decay
+Expansion**, which already carries sickroom air.
 
-## Dépendances
+## Requirements
 
 - [RimScent](https://steamcommunity.com/sharedfiles/filedetails/?id=3645569466)
-- RimScent Extended (le socle) — c'est lui qui porte `ModExtension_TerrainScent`
+- RimScent Extended (the socle) — it is what carries `ModExtension_TerrainScent`
 
-Vanilla Events Expanded n'est pas requis : son volet ne se charge que s'il est actif, via
-`LoadFolders.xml`. Rien n'est écrit dans la sauvegarde.
+Vanilla Events Expanded is not required: its section loads only if it is active, through
+`LoadFolders.xml`. Nothing is written to the save.
 
 ## Licence
 
-MIT — voir [LICENSE](LICENSE) et [ATTRIBUTION.md](ATTRIBUTION.md).
+MIT — see [LICENSE](LICENSE) and [ATTRIBUTION.md](ATTRIBUTION.md).
