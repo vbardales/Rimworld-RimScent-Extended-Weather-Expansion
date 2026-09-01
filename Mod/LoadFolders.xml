@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <loadFolders>
 	<v1.6>
-		<!-- Racine : About seulement pour l'instant. Le contenu meteo du jeu de base
-		     reste a ecrire ; ce mod ne porte encore que les evenements de VEE. -->
+		<!-- Racine : About, les onze pensees, et tout ce qui ne vise que le jeu de base
+		     et ses DLC. Les defs de DLC sont patches sans MayRequire : une operation
+		     conditionnelle dont le xpath ne correspond a rien ne fait rien.
+
+		     Les pensees vivent a la racine et non dans le volet VEE, sous peine que le
+		     volet conditionnel soit le seul a pouvoir s'en servir. -->
 		<li>/</li>
 		<li IfModActive="vanillaexpanded.vee">VEE</li>
 	</v1.6>

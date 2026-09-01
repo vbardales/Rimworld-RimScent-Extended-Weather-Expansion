@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Meteos et conditions du jeu de base et des DLC. RimScent en couvre deja six :
+       Rain, Fog, RainyThunderstorm et FoggyRain pour le petrichor, ToxicFallout et
+       VolcanicWinter. Rien de ce qui suit ne les redouble.
+
+       Aucun MayRequire n'est necessaire : une operation conditionnelle dont le xpath ne
+       correspond a rien ne fait rien et ne leve aucune erreur. Les defs d'Anomaly, de
+       Biotech et d'Odyssey sont donc visees directement, et le mod fonctionne sans eux.
+
+       Les valeurs restent basses parce que la meteo et les conditions sont lues a
+       l'echelle de la carte, hors boucle de cellules : chaque odeur ici touche toute la
+       colonie d'un coup. -->
+
+  <!-- Orage sec et tempete d'eclairs : l'ozone avant la pluie qui ne vient pas. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="DryThunderstorm") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="DryThunderstorm") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Ozone</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="DryThunderstorm") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="DryThunderstorm") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Ozone</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="Flashstorm") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="Flashstorm") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Ozone</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="Flashstorm") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="Flashstorm") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Ozone</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Le froid vide l'air. Neige, blizzard, vague de froid, gel profond. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="SnowGentle" or defName="SnowHard" or defName="Blizzard") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="SnowGentle" or defName="SnowHard" or defName="Blizzard") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_ColdAir</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="SnowGentle" or defName="SnowHard" or defName="Blizzard") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="SnowGentle" or defName="SnowHard" or defName="Blizzard") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_ColdAir</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="ColdSnap" or defName="DeepFreeze") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="ColdSnap" or defName="DeepFreeze") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_ColdAir</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="ColdSnap" or defName="DeepFreeze") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="ColdSnap" or defName="DeepFreeze") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_ColdAir</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- La chaleur, au contraire, fait tout remonter d'un coup. On reutilise l'odeur
+       ecrite pour la canicule de Vanilla Events Expanded : c'est la meme. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="HeatWave" or defName="UnnaturalHeat" or defName="HeatVentHeat") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="HeatWave" or defName="UnnaturalHeat" or defName="HeatVentHeat") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Swelter</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="HeatWave" or defName="UnnaturalHeat" or defName="HeatVentHeat") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="HeatWave" or defName="UnnaturalHeat" or defName="HeatVentHeat") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Swelter</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Secheresse d'Odyssey, meme odeur que celle de Vanilla Events Expanded. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="Drought" or defName="DroughtInitial") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="Drought" or defName="DroughtInitial") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Drought</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="Drought" or defName="DroughtInitial") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="Drought" or defName="DroughtInitial") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Drought</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Spores bioluminescentes d'Odyssey. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="BioluminescentSpores") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="BioluminescentSpores") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Spores</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="BioluminescentSpores") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="BioluminescentSpores") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Spores</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Pluies. La pluie torrentielle d'Odyssey sent le petrichor comme les autres,
+       et la pluie de sang d'Anomaly sent le sang. Les deux pensees sont celles de
+       RimScent, reutilisees par leur defName : rien n'est recopie. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="TorrentialRain") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="TorrentialRain") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_PetrichorScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="TorrentialRain") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="TorrentialRain") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_PetrichorScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="BloodRain") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="BloodRain") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_BloodScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="BloodRain") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="BloodRain") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_BloodScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="BloodRain") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="BloodRain") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_BloodScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="BloodRain") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="BloodRain") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_BloodScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Voile gris d'Anomaly : c'est de la chair grise en suspension. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="GrayPall") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="GrayPall") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_GrayFleshScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/WeatherDef[(defName="GrayPall") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/WeatherDef[(defName="GrayPall") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_GrayFleshScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="GrayPall") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="GrayPall") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_GrayFleshScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="GrayPall") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="GrayPall") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_GrayFleshScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Brume nocive de Biotech : la pensee toxique de RimScent, celle qu'il utilise
+       deja pour les retombees. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="NoxiousHaze") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="NoxiousHaze") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_ToxicScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="NoxiousHaze") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="NoxiousHaze") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_ToxicScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Volcanisme d'Odyssey. Le pyromane y est insensible, comme chez RimScent pour
+       l'hiver volcanique. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="VolcanicAsh" or defName="VolcanicDebris" or defName="LavaFlow") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="VolcanicAsh" or defName="VolcanicDebris" or defName="LavaFlow") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_AshScent</thought>
+          <dysosmicTraits>
+            <li>Pyromaniac</li>
+          </dysosmicTraits>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/GameConditionDef[(defName="VolcanicAsh" or defName="VolcanicDebris" or defName="LavaFlow") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/GameConditionDef[(defName="VolcanicAsh" or defName="VolcanicDebris" or defName="LavaFlow") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScent_AshScent</thought>
+          <dysosmicTraits>
+            <li>Pyromaniac</li>
+          </dysosmicTraits>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

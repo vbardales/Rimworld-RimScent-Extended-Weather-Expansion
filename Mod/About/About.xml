@@ -3,24 +3,41 @@
 	<name>RimScent Extended: Weather Expansion</name>
 	<author>nelim</author>
 	<packageId>nelim.rimscent.extended.weather</packageId>
-	<description>Weather, disasters, and the air outside.
+	<description>The air outside, and the ground it sits on. Weather, disasters, water, forest.
 
-WHAT IS IN IT TODAY
-The events of Vanilla Events Expanded that reach the nose. GameConditionDef is one of the def types RimScent's own extension already accepts, and Vanilla Events Expanded never used a single one of them.
+THE GROUND ITSELF — NEW GROUND FOR RIMSCENT
+RimScent reads only things standing on a tile. Terrain is not a thing: water, mud, sand and ice have no ThingDef, so nothing that gives a place its smell was reachable at all. RimScent Extended adds ModExtension_TerrainScent for exactly this, and the scan reads the terrain grid on the tiles it already walks — an indexed lookup, no extra cost.
 
-- Drought: dust and dry ground, cracked earth, nothing green left to smell.
-- Heat wave: hot air carries everything with it, and none of it is pleasant.
-- Psychic bloom: something floral and wrong, too sweet to be a flower.
+- Fresh water: cool water and wet stone, and it carries a long way.
+- The sea: salt, iodine and cold open water.
+- Stagnant water — warm mud, sulphurous and sweetish — but ONLY above 18C. It is the temperature that makes a marsh smell, not the marsh. Below the threshold the tile does not count at all.
+- Hot springs and the steam geyser: warm mineral steam, faintly of sulphur and iron.
+- Toxic water and lava (Odyssey) reuse RimScent's own toxic and ash thoughts.
 
-WHAT IS COMING
-Rain and wet earth, forest and cut grass, warm mud at the water's edge, the sea, hot springs. Unwashed colonists through Dubs Bad Hygiene — a pawn who does not wash smells, unlike an animal, which does. Pheromones, which nobody notices consciously and everybody notices. Illness on the breath.
+Terrain is counted PER TILE, unlike weather. Three tiles of water at the edge of a stream do not smell like a marsh stretching to the horizon, and the thought's stack limit caps the total — so the number of tiles becomes a free measure of how much of it is around you.
 
-This is the thinnest of the RimScent Extended family today, and the one with the most room to grow.
+THE FOREST
+Every tree, through the plant/treeCategory marker the game already uses to tell a tree from a plant — not a hand-written list. A mod that declares its own tree parent is caught by the same xpath without being named. The six special trees are excluded: anima and gauranlen have a presence of their own, Anomaly's harbinger tree is a horror, and the bonsai is furniture.
 
-Ships in English with a French translation injected on top. Vanilla Events Expanded support loads only if that mod is active. No save data.
+WEATHER AND CONDITIONS
+RimScent already covers rain, fog, toxic fallout and volcanic winter. This adds what it left out, across the base game and all four DLC:
+
+- Dry thunderstorm and flashstorm: ozone, the smell of a storm that has not broken yet.
+- Snow, blizzard, cold snap, deep freeze: the cold has taken everything out of the air, and that is a relief.
+- Heat wave, unnatural heat, heat vents: everything comes back up at once.
+- Bioluminescent spores, drought (Odyssey).
+- Torrential rain smells of petrichor, blood rain of blood, the gray pall of gray flesh, noxious haze of toxins, volcanic ash of ash — all reusing RimScent's own thoughts by name rather than adding new ones. The pyromaniac is unaffected by ash, as upstream.
+- Vanilla Events Expanded: drought, swelter, psychic bloom.
+
+No MayRequire anywhere: a conditional patch whose xpath matches nothing does nothing, so DLC defs are targeted directly and the mod works without them.
+
+WHAT IS NOT IN IT
+Pheromones. RimScent reads a neighbour's hediffs, and no vanilla hediff marks them — a scent on every human would simply be permanent. Unwashed colonists are already covered by RimScent itself, through its Dubs Bad Hygiene support.
+
+Ships in English with a French translation injected on top. No save data.
 
 Requires RimScent and RimScent Extended.</description>
-	<modVersion>0.1.0</modVersion>
+	<modVersion>0.2.0</modVersion>
 	<supportedVersions>
 		<li>1.6</li>
 	</supportedVersions>
@@ -39,6 +56,8 @@ Requires RimScent and RimScent Extended.</description>
 		<li>brrainz.harmony</li>
 		<li>Ludeon.RimWorld</li>
 		<li>reo.RimScent</li>
+		<!-- Le socle porte ModExtension_TerrainScent, sans laquelle le sol ne sent rien :
+		     il faut passer apres lui. -->
 		<li>nelim.rimscent.extended</li>
 		<li>vanillaexpanded.vee</li>
 	</loadAfter>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Le sol. RimScent ne lit que le thingGrid - des objets poses sur des cases - et le
+       terrain n'est pas un objet : l'eau, la vase, le sable et la glace n'ont pas de
+       ThingDef. Rien de ce qui fait l'odeur d'un lieu n'etait donc accessible.
+
+       ModExtension_TerrainScent, fournie par le socle, comble ce trou : ScentScan lit la
+       grille de terrain sur les memes cases qu'il parcourt deja. D'ou la dependance dure
+       au socle pour ce fichier.
+
+       L'odeur est comptee PAR CASE, contrairement a la meteo. Trois cases d'eau au bord
+       d'un ruisseau ne sentent pas comme un marecage a perte de vue, et le stackLimit de
+       la pensee plafonne le total : le nombre de cases devient une mesure de « combien il
+       y en a autour de toi », gratuitement.
+
+       Aucun MayRequire : les terrains d'Odyssey sont vises directement, et une operation
+       conditionnelle dont le xpath ne correspond a rien ne fait rien. -->
+
+  <!-- Eau douce : riviere, lac, crue. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="WaterShallow" or defName="WaterDeep" or defName="WaterMovingShallow" or defName="WaterMovingChestDeep" or defName="ShallowFloodwater") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="WaterShallow" or defName="WaterDeep" or defName="WaterMovingShallow" or defName="WaterMovingChestDeep" or defName="ShallowFloodwater") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Water</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="WaterShallow" or defName="WaterDeep" or defName="WaterMovingShallow" or defName="WaterMovingChestDeep" or defName="ShallowFloodwater") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="WaterShallow" or defName="WaterDeep" or defName="WaterMovingShallow" or defName="WaterMovingChestDeep" or defName="ShallowFloodwater") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Water</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- L'ocean a une odeur a lui, et c'est la plus reconnaissable de toutes. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="WaterOceanShallow" or defName="WaterOceanDeep") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="WaterOceanShallow" or defName="WaterOceanDeep") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Ocean</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="WaterOceanShallow" or defName="WaterOceanDeep") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="WaterOceanShallow" or defName="WaterOceanDeep") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Ocean</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- La vase, mais seulement a la chaleur : c'est la temperature qui fait l'odeur
+       d'un marecage, pas le marecage. En dessous de 18 degres la case ne compte
+       pas du tout - distinct du facteur de temperature global du socle, qui lui
+       attenue une odeur deja presente. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="Marsh" or defName="MarshyTerrain" or defName="Mud" or defName="MarshFlood") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="Marsh" or defName="MarshyTerrain" or defName="Mud" or defName="MarshFlood") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Stagnant</thought>
+          <aboveTemperature>18</aboveTemperature>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="Marsh" or defName="MarshyTerrain" or defName="Mud" or defName="MarshFlood") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="Marsh" or defName="MarshyTerrain" or defName="Mud" or defName="MarshFlood") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Stagnant</thought>
+          <aboveTemperature>18</aboveTemperature>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Sources chaudes d'Odyssey. Le jeu leur donne deja un souvenir pour le bain ;
+       celle-ci est l'odeur, qu'on sente ou non l'envie d'y entrer. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="HotSpring") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="HotSpring") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_HotSpring</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="HotSpring") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="HotSpring") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_HotSpring</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Eaux toxiques d'Odyssey : la pensee toxique de RimScent, reutilisee. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="ToxicWaterShallow" or defName="ToxicWaterDeep" or defName="ToxicWaterMovingShallow" or defName="ToxicWaterMovingChestDeep" or defName="ToxicWaterOceanShallow" or defName="ToxicWaterOceanDeep") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="ToxicWaterShallow" or defName="ToxicWaterDeep" or defName="ToxicWaterMovingShallow" or defName="ToxicWaterMovingChestDeep" or defName="ToxicWaterOceanShallow" or defName="ToxicWaterOceanDeep") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScent_ToxicScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="ToxicWaterShallow" or defName="ToxicWaterDeep" or defName="ToxicWaterMovingShallow" or defName="ToxicWaterMovingChestDeep" or defName="ToxicWaterOceanShallow" or defName="ToxicWaterOceanDeep") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="ToxicWaterShallow" or defName="ToxicWaterDeep" or defName="ToxicWaterMovingShallow" or defName="ToxicWaterMovingChestDeep" or defName="ToxicWaterOceanShallow" or defName="ToxicWaterOceanDeep") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScent_ToxicScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Lave d'Odyssey : cendre et pierre chaude. Le pyromane y est insensible,
+       comme chez RimScent pour l'hiver volcanique - mais dysosmicTraits vit sur
+       ModExtension_Scent, pas sur celle du terrain, donc l'exemption ne s'applique
+       pas ici. C'est un manque assume : la lave sent pour tout le monde. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="LavaShallow" or defName="LavaDeep" or defName="CooledLava") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="LavaShallow" or defName="LavaDeep" or defName="CooledLava") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScent_AshScent</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="LavaShallow" or defName="LavaDeep" or defName="CooledLava") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="LavaShallow" or defName="LavaDeep" or defName="CooledLava") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScent_AshScent</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Sol forestier moussu : le tapis, pas les arbres. Meme odeur qu'eux. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="MossyTerrain" or defName="GlowforestSoil") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="MossyTerrain" or defName="GlowforestSoil") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Forest</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/TerrainDef[(defName="MossyTerrain" or defName="GlowforestSoil") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/TerrainDef[(defName="MossyTerrain" or defName="GlowforestSoil") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentExtended.ModExtension_TerrainScent">
+          <thought>RimScentExtended_Scent_Forest</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

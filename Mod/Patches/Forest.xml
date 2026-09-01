@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Les arbres, eux, SONT des objets : aucun code n'est necessaire, le patch suffit.
+
+       Le critere est plant/treeCategory, que le jeu utilise pour distinguer un arbre
+       d'une plante. Il n'est declare que sur le def abstrait TreeBase - les operations
+       de patch s'appliquant au XML brut, avant la resolution de l'heritage, viser le
+       parent suffit et couvre tous ses enfants d'un coup, y compris ceux des mods.
+
+       Un mod qui declare son propre parent d'arbres avec son treeCategory est attrape
+       par le meme xpath, sans etre nomme. C'est le meme principe que le patch fleurs
+       d'Everyday Life sur purpose="Beauty" : patcher par un critere que le jeu utilise
+       deja, jamais par une liste.
+
+       Les six arbres speciaux sont exclus nommement, parce qu'ils declarent chacun leur
+       propre treeCategory au lieu d'heriter de TreeBase, et qu'aucun ne sent la foret :
+       l'anima et le gauranlen ont une presence a eux, le harbinger d'Anomaly est une
+       horreur, et le bonsai est un objet de decoration d'interieur. -->
+
+  <!-- Le parent abstrait des arbres, et tout mod qui declare le sien. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[(plant/treeCategory and not(defName="Plant_TreeHarbinger") and not(defName="Plant_TreePolux") and not(defName="Plant_TreeGauranlen") and not(defName="Plant_TreeAnima") and not(defName="Plant_TreeArchean") and not(defName="Plant_TreeBonsai")) and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[(plant/treeCategory and not(defName="Plant_TreeHarbinger") and not(defName="Plant_TreePolux") and not(defName="Plant_TreeGauranlen") and not(defName="Plant_TreeAnima") and not(defName="Plant_TreeArchean") and not(defName="Plant_TreeBonsai")) and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Forest</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[(plant/treeCategory and not(defName="Plant_TreeHarbinger") and not(defName="Plant_TreePolux") and not(defName="Plant_TreeGauranlen") and not(defName="Plant_TreeAnima") and not(defName="Plant_TreeArchean") and not(defName="Plant_TreeBonsai")) and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[(plant/treeCategory and not(defName="Plant_TreeHarbinger") and not(defName="Plant_TreePolux") and not(defName="Plant_TreeGauranlen") and not(defName="Plant_TreeAnima") and not(defName="Plant_TreeArchean") and not(defName="Plant_TreeBonsai")) and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_Forest</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+  <!-- Le geyser du jeu de base : de la vapeur minerale qui sort du sol. Meme odeur
+       que les sources chaudes d'Odyssey, dont il est l'equivalent vanilla. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[(defName="SteamGeyser") and modExtensions]/modExtensions</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[(defName="SteamGeyser") and modExtensions]/modExtensions</xpath>
+      <value>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_HotSpring</thought>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[(defName="SteamGeyser") and not(modExtensions)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[(defName="SteamGeyser") and not(modExtensions)]</xpath>
+      <value>
+        <modExtensions>
+        <li Class="RimScentReworked.ModExtension_Scent">
+          <thought>RimScentExtended_Scent_HotSpring</thought>
+        </li>
+        </modExtensions>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

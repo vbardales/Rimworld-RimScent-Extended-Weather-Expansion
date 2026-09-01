@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: parched air -->
+  <RimScentExtended_Scent_Drought.stages.parched_air.label>air desséché</RimScentExtended_Scent_Drought.stages.parched_air.label>
+  <!-- EN: Dust, cracked earth and dead grass. There is not a trace of moisture in the air. -->
+  <RimScentExtended_Scent_Drought.stages.parched_air.description>De la poussière, de la terre craquelée et de l'herbe morte. Pas une trace d'humidité dans l'air.</RimScentExtended_Scent_Drought.stages.parched_air.description>
+
+  <!-- EN: sweltering air -->
+  <RimScentExtended_Scent_Swelter.stages.sweltering_air.label>air étouffant</RimScentExtended_Scent_Swelter.stages.sweltering_air.label>
+  <!-- EN: Hot, still, heavy air that smells of sweat and baked dust. Every breath feels used. -->
+  <RimScentExtended_Scent_Swelter.stages.sweltering_air.description>Un air chaud, immobile et lourd, qui sent la sueur et la poussière cuite. Chaque inspiration semble déjà servie.</RimScentExtended_Scent_Swelter.stages.sweltering_air.description>
+
+  <!-- EN: alien blossom -->
+  <RimScentExtended_Scent_PsychicBloom.stages.alien_blossom.label>floraison étrangère</RimScentExtended_Scent_PsychicBloom.stages.alien_blossom.label>
+  <!-- EN: A sweet, heavy floral scent drifts everywhere. It is pleasant, and nothing on this world smells like it. -->
+  <RimScentExtended_Scent_PsychicBloom.stages.alien_blossom.description>Un parfum floral, sucré et lourd, flotte partout. C'est agréable, et rien sur ce monde ne sent comme ça.</RimScentExtended_Scent_PsychicBloom.stages.alien_blossom.description>
+
+  <!-- EN: ozone -->
+  <RimScentExtended_Scent_Ozone.stages.ozone.label>ozone</RimScentExtended_Scent_Ozone.stages.ozone.label>
+  <!-- EN: Sharp and metallic, the smell of a storm that has not broken yet. -->
+  <RimScentExtended_Scent_Ozone.stages.ozone.description>Vif et métallique, l'odeur d'un orage qui n'a pas encore éclaté.</RimScentExtended_Scent_Ozone.stages.ozone.description>
+
+  <!-- EN: cold clean air -->
+  <RimScentExtended_Scent_ColdAir.stages.cold_clean_air.label>air froid et pur</RimScentExtended_Scent_ColdAir.stages.cold_clean_air.label>
+  <!-- EN: The cold has taken everything out of the air. There is nothing left to smell, and that is a relief. -->
+  <RimScentExtended_Scent_ColdAir.stages.cold_clean_air.description>Le froid a tout retiré de l'air. Il n'y a plus rien à sentir, et c'est un soulagement.</RimScentExtended_Scent_ColdAir.stages.cold_clean_air.description>
+
+  <!-- EN: spores -->
+  <RimScentExtended_Scent_Spores.stages.spores.label>spores</RimScentExtended_Scent_Spores.stages.spores.label>
+  <!-- EN: Something fine and organic hangs in the air. It settles on the tongue. -->
+  <RimScentExtended_Scent_Spores.stages.spores.description>Quelque chose de fin et d'organique flotte dans l'air. Ça se dépose sur la langue.</RimScentExtended_Scent_Spores.stages.spores.description>
+
+  <!-- EN: forest -->
+  <RimScentExtended_Scent_Forest.stages.forest.label>forêt</RimScentExtended_Scent_Forest.stages.forest.label>
+  <!-- EN: Resin, bark and leaf mould. Green, cool and much older than the colony. -->
+  <RimScentExtended_Scent_Forest.stages.forest.description>De la résine, de l'écorce et de l'humus. Vert, frais, et bien plus vieux que la colonie.</RimScentExtended_Scent_Forest.stages.forest.description>
+
+  <!-- EN: fresh water -->
+  <RimScentExtended_Scent_Water.stages.fresh_water.label>eau douce</RimScentExtended_Scent_Water.stages.fresh_water.label>
+  <!-- EN: Cool water and wet stone. Clean, and it carries a long way. -->
+  <RimScentExtended_Scent_Water.stages.fresh_water.description>De l'eau fraîche et de la pierre mouillée. Propre, et ça porte loin.</RimScentExtended_Scent_Water.stages.fresh_water.description>
+
+  <!-- EN: sea air -->
+  <RimScentExtended_Scent_Ocean.stages.sea_air.label>air marin</RimScentExtended_Scent_Ocean.stages.sea_air.label>
+  <!-- EN: Salt, iodine and cold open water. It gets into everything and nobody minds. -->
+  <RimScentExtended_Scent_Ocean.stages.sea_air.description>Du sel, de l'iode et du grand large. Ça s'imprègne partout et personne ne s'en plaint.</RimScentExtended_Scent_Ocean.stages.sea_air.description>
+
+  <!-- EN: stagnant water -->
+  <RimScentExtended_Scent_Stagnant.stages.stagnant_water.label>eau stagnante</RimScentExtended_Scent_Stagnant.stages.stagnant_water.label>
+  <!-- EN: Warm mud and standing water. Sulphurous, sweetish, and it clings to the back of the throat. -->
+  <RimScentExtended_Scent_Stagnant.stages.stagnant_water.description>De la vase tiède et de l'eau dormante. Soufré, douceâtre, et ça reste au fond de la gorge.</RimScentExtended_Scent_Stagnant.stages.stagnant_water.description>
+
+  <!-- EN: hot spring -->
+  <RimScentExtended_Scent_HotSpring.stages.hot_spring.label>source chaude</RimScentExtended_Scent_HotSpring.stages.hot_spring.label>
+  <!-- EN: Warm mineral steam, faintly of sulphur and iron. It smells like somewhere worth stopping. -->
+  <RimScentExtended_Scent_HotSpring.stages.hot_spring.description>De la vapeur minérale tiède, un peu de soufre et de fer. Ça sent l'endroit où l'on a envie de s'arrêter.</RimScentExtended_Scent_HotSpring.stages.hot_spring.description>
+
+</LanguageData>
