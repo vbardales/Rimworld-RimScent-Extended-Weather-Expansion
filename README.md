@@ -47,6 +47,19 @@ d'arbres est attrapé par le même xpath sans être nommé.
 gauranlen ont une présence à eux, le polux et l'archéen sont des artefacts, le harbinger
 d'Anomaly est une horreur, et le bonsaï est un objet de décoration d'intérieur.
 
+### La limite du procédé, assumée
+
+Déclarer son propre `treeCategory` plutôt que d'hériter de `TreeBase` est courant côté mods :
+sur les mods installés ici, une soixantaine de fichiers le font. C'est ce qui rend le critère
+utile — ces arbres-là sont attrapés sans être nommés, et le prochain mod installé le sera
+aussi, sans mise à jour.
+
+C'est aussi la limite. **L'arbre maudit d'un mod sentira la forêt agréable**, faute de
+pouvoir l'en distinguer autrement qu'en le nommant — et nommer, c'est précisément ce que ce
+patch refuse de faire. Les six exclusions vanilla sont un cas particulier justifié par le
+fait qu'elles sont finies et connues ; il n'existe pas d'équivalent pour les mods. Si un cas
+gênant apparaît en jeu, l'exclusion se règle en ajoutant un `not(defName="…")` de plus.
+
 ## Météo et conditions
 
 RimScent couvre déjà six defs : `Rain`, `Fog`, `RainyThunderstorm` et `FoggyRain` pour le
