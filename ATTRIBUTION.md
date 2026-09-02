@@ -2,30 +2,30 @@
 
 ## RimScent
 
-par **reo / ocarina0001** — MIT.
+by **reo / ocarina0001** — MIT.
 [Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3645569466)
 
-Mod compagnon, pas un fork. Aucun fichier de RimScent n'est copié ni redistribué. Il est
-déclaré en dépendance dure et on utilise `RimScentReworked.ModExtension_Scent`, son propre
-point d'extension public, sur des `WeatherDef` et des `GameConditionDef` — deux des types
-qu'il accepte et que personne n'utilisait au-delà de six defs.
+A companion mod, not a fork. No file from RimScent is copied or redistributed. It is declared
+as a hard dependency, and we use `RimScentReworked.ModExtension_Scent`, its own public extension
+point, on `WeatherDef`s and `GameConditionDef`s — two of the types it accepts and that nobody
+was using beyond six defs.
 
-**Six de ses `ThoughtDef` sont réutilisées par leur `defName`**, jamais recopiées :
+**Six of its `ThoughtDef`s are reused by `defName`**, never copied:
 `RimScent_PetrichorScent`, `RimScent_BloodScent`, `RimScent_GrayFleshScent`,
-`RimScent_ToxicScent`, `RimScent_AshScent`. Là où il avait déjà écrit l'odeur qui convient,
-on la cite plutôt que d'en ajouter une de plus.
+`RimScent_ToxicScent`, `RimScent_AshScent`. Where it had already written the right smell, we
+cite it rather than add one more.
 
-## Mods lus par cette extension
+## Mods read by this expansion
 
-Rien n'en est copié. Visé uniquement par des `PatchOperation`, dans un dossier qui ne se
-charge que si le mod est actif :
+Nothing is copied from them. Targeted only by `PatchOperation`s, in a folder that loads only if
+the mod is active:
 
 - **Vanilla Events Expanded** (`vanillaexpanded.vee`)
 
-Les patchs météo, terrain et forêt ne visent aucun mod : ils ciblent le jeu de base et ses
-quatre DLC, plus le marqueur `plant/treeCategory` qui attrape les arbres de n'importe quel
-mod sans le nommer ni le lire.
+The weather, terrain and forest patches target no mod at all: they aim at the base game and its
+four DLCs, plus the `plant/treeCategory` marker, which catches trees from any mod without naming
+or reading it.
 
-## Ce mod
+## This mod
 
-MIT, © nelim. Defs, patchs, seuils et traductions sont un travail original.
+MIT, © nelim. Defs, patches, thresholds and translations are original work.
