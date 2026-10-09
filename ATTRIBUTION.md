@@ -28,4 +28,4 @@ or reading it.
 
 ## This mod
 
-MIT, © nelim. Defs, patches, thresholds and translations are original work.
+MIT, © Nelim. Defs, patches, thresholds and translations are original work.

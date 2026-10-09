@@ -1,0 +1,18 @@
+# Generated texture conversions: version the editable PNG sources instead.
+*.dds
+*.DDS
+
+# Runtime evidence stays on disk.  Git keeps only the compact, revision-bound
+# one-line summaries in docs/runs/ and the evidence policy in TESTING.md.
+Tests/Pickle/Evidence/
+evidence/
+
+Art/.render/
+.build/
+**/Source/obj/
+**/Source/bin/
+**/Source/**/obj/
+**/Source/**/bin/
+desktop.ini
+Thumbs.db
+.DS_Store
