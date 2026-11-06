@@ -1,3 +1,5 @@
+# What no shared check reads: the mood effect of each of the 11 weather scents, the hard dependencies, the optional VEE gate, and that this declarative
+# expansion ships no code. XML parse, French coverage and the settings audit are Check-ModBasics, Check-Translations and Check-SettingsContract.
 [CmdletBinding()]
 param()
 
@@ -11,9 +13,6 @@ function Assert-True([bool]$condition, [string]$message) {
 function Read-Xml([string]$relativePath) {
     [xml](Get-Content -LiteralPath (Join-Path $root $relativePath) -Raw)
 }
-
-$xmlFiles = Get-ChildItem -LiteralPath (Join-Path $root 'Mod') -Recurse -File -Filter '*.xml'
-foreach ($file in $xmlFiles) { [xml](Get-Content -LiteralPath $file.FullName -Raw) | Out-Null }
 
 $expectedMoodEffects = [ordered]@{
     RimScentExtended_Scent_Drought      = '-2'
@@ -37,15 +36,6 @@ foreach ($thought in $owned) {
     Assert-True ([string]$thought.stages.li.baseMoodEffect -eq $expectedMoodEffects[$thought.defName]) "Unexpected mood effect for $($thought.defName)."
 }
 
-$french = Read-Xml 'Mod/Languages/French/DefInjected/ThoughtDef/Scents_Weather.xml'
-$frenchEntries = @($french.LanguageData.ChildNodes | Where-Object { $_.NodeType -eq 'Element' })
-Assert-True ($frenchEntries.Count -eq 22) 'French DefInjected inventory changed.'
-foreach ($thought in $expectedMoodEffects.Keys) {
-    $entries = @($frenchEntries | Where-Object { $_.Name -like "$thought.*" })
-    Assert-True ($entries.Count -eq 2) "French translation must provide label and description for $thought."
-    Assert-True ((@($entries | Where-Object { [string]::IsNullOrWhiteSpace($_.InnerText) }).Count) -eq 0) "French translation contains empty text for $thought."
-}
-
 $about = Read-Xml 'Mod/About/About.xml'
 $dependencies = @($about.ModMetaData.modDependencies.li.packageId)
 foreach ($id in @('reo.RimScent', 'nelim.rimscent.extended')) {
@@ -59,9 +49,7 @@ $folders = Read-Xml 'Mod/LoadFolders.xml'
 $vee = @($folders.SelectNodes("/loadFolders/v1.6/li[@IfModActive='vanillaexpanded.vee' and text()='VEE']"))
 Assert-True ($vee.Count -eq 1) 'VEE patches must remain conditionally loaded.'
 
-$modCode = Get-ChildItem -LiteralPath (Join-Path $root 'Mod') -Recurse -File -Include '*.cs','*.dll'
+$modCode = Get-ChildItem -LiteralPath (Join-Path $root 'Mod') -Recurse -File | Where-Object { $_.Extension -in '.cs', '.dll' }
 Assert-True ($null -eq $modCode -or @($modCode).Count -eq 0) 'This declarative expansion must not ship code or an assembly.'
-$settingsReferences = @(rg -l -i 'MainButton|ModSettings|DoSettingsWindowContents|GetSettings' (Join-Path $root 'Mod'))
-Assert-True ($settingsReferences.Count -eq 0) 'A settings or MainButtons implementation was found; redo the settings audit.'
 
-Write-Host "PASS: $($xmlFiles.Count) XML files, $($owned.Count) owned thoughts, and $($frenchEntries.Count) French entries validated."
+Write-Host "PASS: $($owned.Count) owned thoughts with their mood effect, hard dependencies, VEE gate, no code."
