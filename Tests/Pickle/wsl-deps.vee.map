@@ -2,3 +2,5 @@
 reo.RimScent 3645569466
 nelim.rimscent.extended path:RimScentExtended/Mod
 vanillaexpanded.vee 1938420742
+# VEE.dll references VEF (Player.log of aa63: "expected class 'VEF.HotSwappableAttribute' in assembly 'VEF'"): Vanilla Expanded Framework must be staged.
+OskarPotocki.VanillaFactionsExpanded.Core 2023507013
