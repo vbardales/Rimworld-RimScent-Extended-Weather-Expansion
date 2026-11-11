@@ -17,8 +17,8 @@ showcase:     complete
 tested_on:
 workshop:
 remaining:
-  - "2026-11-11: replay stops at setupRepo (first open 1.i). 1.a done: Search-Workshop on About.xml, no duplicate mod"
-  - "2026-11-11: 1.i defect: local main (8 commits) and origin/main (10 commits, last 2026-09-04) share no ancestor; push refused; owner decides merge with --allow-unrelated-histories or force-push; nothing pushed"
+  - "2026-11-11: replay stops at setupRepo (first open 1.h). 1.a done: Search-Workshop on About.xml, no duplicate mod"
+  - "2026-11-11: 1.i done: local history rebased onto origin/main (add/add conflicts kept local version) and pushed, a38eb63"
   - "2026-11-11: 1.h defect: STATUS.md lacks upstream_mod_remotes (N/A or list of source mod repositories)"
   - "2026-11-11: 1.j: Check-Status ERROR cleared by workflow_stage; WARN left: em dash in Mod/About/About.xml, no <url> in About.xml"
   - "2026-11-11: defect: Mod/LICENSE differs from root LICENSE; root TEST_SCENARIOS.md, Art/echo.png and Art/ModIcon-signature-candidate.png are off the closed lists"
