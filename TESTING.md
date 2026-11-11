@@ -37,3 +37,17 @@ MainButtons shortcut, plus English and French display.
   French keys with 0 errors after 81 patch operations over 11,597 defs.
 - This is static evidence only.  It does not satisfy any runtime, conditional
   scenario, manual-validation or `tested` requirement.
+
+## Scenarios and passes — 2026-11-11
+
+- `Tests/SCENARIOS.md` holds one scenario per promised behaviour (S1 to S10). None has run.
+- Offline: `Tests/Test-Xml.ps1` (XML, 11 owned thoughts and their mood effect, French coverage, dependency
+  split, VEE gate, no code), `../scripts/Check-Translations.ps1`, `../scripts/Check-DefInjected.ps1`. No unit-test
+  project: the mod ships no code, so `Run-UnitTests.ps1` has nothing to build.
+- Pickle, written and not run: `Tests/Pickle/` holds two features, `01-minimal-load` and `02-vee`.
+  Two passes are needed: without optional mods (`wsl-deps.sans-facultatifs.map`), and with Vanilla Events Expanded
+  (`wsl-deps.vee.map`). The mod declares no `incompatibleWith`, so no incompatibility pass.
+- Not applicable in Gherkin today: scenarios S2 to S9 (a colonist feels a terrain or weather scent). They need
+  steps to set a terrain, force a weather, start a game condition and set the temperature. These steps are not
+  in the catalogue and were requested from the PickleTools session on 2026-11-11; no local step is written.
+  Mood values and the dependency contract are proven offline and are not repeated in Gherkin.
