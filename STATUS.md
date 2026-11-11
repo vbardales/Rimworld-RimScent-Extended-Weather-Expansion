@@ -7,7 +7,8 @@ mod:          RimScent Extended: Weather Expansion
 packageId:    nelim.rimscent.extended.weather
 repo:         Rimworld-RimScent-Extended-Weather-Expansion
 visibility:   public
-detached:     no
+remote:       https://github.com/vbardales/Rimworld-RimScent-Extended-Weather-Expansion.git
+detached:     yes
 workflow_stage: setupRepo
 licence:      open
 licence_at:   the same MIT base as RimScent Extended
@@ -16,9 +17,9 @@ showcase:     complete
 tested_on:
 workshop:
 remaining:
-  - "2026-11-11: replay stops at setupRepo. 1.a unverified: duplicate-mod search not run (needs owner OK for Search-Workshop)"
-  - "2026-11-11: 1.f/1.i defect: local .git has 6 commits on main and no remote; GitHub repo vbardales/Rimworld-RimScent-Extended-Weather-Expansion is public and not empty, history unknown, nothing pushed"
-  - "2026-11-11: 1.h defect: STATUS.md front matter lacks remote and upstream_mod_remotes; detached: no is stale"
+  - "2026-11-11: replay stops at setupRepo (first open 1.i). 1.a done: Search-Workshop on About.xml, no duplicate mod"
+  - "2026-11-11: 1.i defect: local main (8 commits) and origin/main (10 commits, last 2026-09-04) share no ancestor; push refused; owner decides merge with --allow-unrelated-histories or force-push; nothing pushed"
+  - "2026-11-11: 1.h defect: STATUS.md lacks upstream_mod_remotes (N/A or list of source mod repositories)"
   - "2026-11-11: 1.j: Check-Status ERROR cleared by workflow_stage; WARN left: em dash in Mod/About/About.xml, no <url> in About.xml"
   - "2026-11-11: defect: Mod/LICENSE differs from root LICENSE; root TEST_SCENARIOS.md, Art/echo.png and Art/ModIcon-signature-candidate.png are off the closed lists"
   - defect: About.xml has neither a <url> nor the required final [url=...]Source code on GitHub[/url] description link
