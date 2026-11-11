@@ -9,17 +9,19 @@ repo:         Rimworld-RimScent-Extended-Weather-Expansion
 visibility:   public
 remote:       https://github.com/vbardales/Rimworld-RimScent-Extended-Weather-Expansion.git
 detached:     yes
-workflow_stage: setupRepo
+workflow_stage: makeSources
 licence:      open
 licence_at:   the same MIT base as RimScent Extended
+upstream_mod_remotes:
+  - https://github.com/ocarina0001/rimscent
 dependencies: declared
 showcase:     complete
 tested_on:
 workshop:
 remaining:
-  - "2026-11-11: replay stops at setupRepo (first open 1.h). 1.a done: Search-Workshop on About.xml, no duplicate mod"
+  - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage makeSources. 1.a done: Search-Workshop on About.xml, no duplicate mod"
+  - "2026-11-11: 2.g open: target version for code[x.y.z] undecided (About modVersion 0.2.0, CHANGELOG 0.1.0, Workshop item 3811308824 installed); 2.a note: Art/ModIcon-source.png is only 106x89"
   - "2026-11-11: 1.i done: local history rebased onto origin/main (add/add conflicts kept local version) and pushed, a38eb63"
-  - "2026-11-11: 1.h defect: STATUS.md lacks upstream_mod_remotes (N/A or list of source mod repositories)"
   - "2026-11-11: 1.j: Check-Status ERROR cleared by workflow_stage; WARN left: em dash in Mod/About/About.xml, no <url> in About.xml"
   - "2026-11-11: defect: Mod/LICENSE differs from root LICENSE; root TEST_SCENARIOS.md, Art/echo.png and Art/ModIcon-signature-candidate.png are off the closed lists"
   - defect: About.xml has neither a <url> nor the required final [url=...]Source code on GitHub[/url] description link
@@ -28,7 +30,7 @@ remaining:
   - unverified: English and French display has not been checked in game
 session:      audit:      2026-09-22, static evidence review
 updated:      2026-11-11, replay-audit
-protocols_read_sha: d454cebad7bf5d49ad97a9ab5655f7de42e585ad
+protocols_read_sha: b6a106fe7793ab994bf84cdcb6872a2fb961cc54
 ---
 
 # RimScent Extended: Weather Expansion — status
