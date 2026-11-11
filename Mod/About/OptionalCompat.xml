@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OptionalCompat>
+  <!-- workshopId from the Workshop page of Vanilla Events Expanded (2026-11-11). -->
+  <li><packageId>vanillaexpanded.vee</packageId><workshopId>1938420742</workshopId><kind>patch</kind></li>
+</OptionalCompat>
