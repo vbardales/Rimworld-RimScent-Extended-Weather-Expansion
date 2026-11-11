@@ -21,7 +21,7 @@ tested_on:
 workshop:
 remaining:
   - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage playTests[1.0.0]. 1.a done: Search-Workshop on About.xml, no duplicate mod"
-  - "2026-11-11: playTests open: minimal ticket 20261111-180427-554-8bff DONE green at fd8c213 (1 passed, VEE scenario skipped by design, triaged to Evidence/initial-minimal, docs/runs/2026-11-11-fd8c213-minimal.md). VEE ticket aa63 HUNG in game load (exit 143, killed): Player.log showed VEE.dll needs VEF (VEF.HotSwappableAttribute), absent from the map. Fixed in d7534d7 (wsl-deps.vee.map + OskarPotocki.VanillaFactionsExpanded.Core 2023507013, id and packageId not yet checked on disk). Refiled 20261111-195652-403-8007 (filter 02-vee, StallMinutes 10, RunTimeoutMinutes 20, evidence Tests/Pickle/Inbox/initial-vee-2): wait RUN_DONE from TM, then triage. About.xml em dashes removed (8ad0b48). PiT added the steps for S2 to S8 (1c5ad1e): terrain floor set, weather set at once, game condition started, map temperature, decor placed; write Gherkin for S2 to S8 only after RUN_DONE (the tickets stage the working tree), one small ticket per scenario. 8.m code review open; 8.l tested_on empty; 2.a note: Art/ModIcon-source.png is only 106x89"
+  - "2026-11-11: playTests open: minimal ticket 20261111-180427-554-8bff DONE green at fd8c213 (1 passed, VEE scenario skipped by design, triaged to Evidence/initial-minimal, docs/runs/2026-11-11-fd8c213-minimal.md). VEE ticket aa63 HUNG in game load (exit 143, killed): Player.log showed VEE.dll needs VEF (VEF.HotSwappableAttribute), absent from the map. Fixed in d7534d7 (wsl-deps.vee.map + OskarPotocki.VanillaFactionsExpanded.Core 2023507013, id and packageId not yet checked on disk). Refiled 20261111-195652-403-8007 (filter 02-vee, StallMinutes 10, RunTimeoutMinutes 20, evidence Tests/Pickle/Inbox/initial-vee-2): DONE green (docs/runs/2026-11-11-d5c4aa8-vee.md, triaged to Evidence/initial-vee-2). About.xml em dashes removed (8ad0b48). PiT added the steps for S2 to S8 (1c5ad1e): terrain floor set, weather set at once, game condition started, map temperature, decor placed; write Gherkin for S2 to S8 only after RUN_DONE (the tickets stage the working tree), one small ticket per scenario. 8.m code review open; 8.l tested_on empty; 2.a note: Art/ModIcon-source.png is only 106x89"
   - "2026-11-11: 1.i done: local history rebased onto origin/main (add/add conflicts kept local version) and pushed, a38eb63"
   - "2026-11-11: 1.j: Check-Status ERROR cleared by workflow_stage; WARN left: em dash in Mod/About/About.xml, no <url> in About.xml"
   - "2026-11-11: defect: Mod/LICENSE differs from root LICENSE; root TEST_SCENARIOS.md, Art/echo.png and Art/ModIcon-signature-candidate.png are off the closed lists"
@@ -30,8 +30,8 @@ remaining:
   - unverified: no functional or Pickle test suite/results; weather, terrain, DLC and VEE patch behaviour remains untested in game
   - unverified: English and French display has not been checked in game
 session:      audit:      2026-09-22, static evidence review
-updated:      2026-11-11, minimal run triaged
-protocols_read_sha: 8f825f745b3f350b8a3cbd030fb72f0aaa82c065
+updated:      2026-11-11, VEE run 8007 green and triaged
+protocols_read_sha: 3937f9048f97c0e3cd28ab4c492ddef003895f23
 ---
 
 # RimScent Extended: Weather Expansion — status
