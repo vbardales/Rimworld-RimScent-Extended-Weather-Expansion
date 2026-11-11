@@ -29,7 +29,7 @@
   <!-- EN: spores -->
   <RimScentExtended_Scent_Spores.stages.spores.label>spores</RimScentExtended_Scent_Spores.stages.spores.label>
   <!-- EN: Something fine and organic hangs in the air. It settles on the tongue. -->
-  <RimScentExtended_Scent_Spores.stages.spores.description>Quelque chose de fin et d'organique flotte dans l'air. Ça se dépose sur la langue.</RimScentExtended_Scent_Spores.stages.spores.description>
+  <RimScentExtended_Scent_Spores.stages.spores.description>Quelque chose de fin et organique flotte dans l'air. Ça se dépose sur la langue.</RimScentExtended_Scent_Spores.stages.spores.description>
 
   <!-- EN: forest -->
   <RimScentExtended_Scent_Forest.stages.forest.label>forêt</RimScentExtended_Scent_Forest.stages.forest.label>
@@ -44,7 +44,7 @@
   <!-- EN: sea air -->
   <RimScentExtended_Scent_Ocean.stages.sea_air.label>air marin</RimScentExtended_Scent_Ocean.stages.sea_air.label>
   <!-- EN: Salt, iodine and cold open water. It gets into everything and nobody minds. -->
-  <RimScentExtended_Scent_Ocean.stages.sea_air.description>Du sel, de l'iode et du grand large. Ça s'imprègne partout et personne ne s'en plaint.</RimScentExtended_Scent_Ocean.stages.sea_air.description>
+  <RimScentExtended_Scent_Ocean.stages.sea_air.description>Du sel, de l'iode et du grand large. Ça imprègne tout et personne ne s'en plaint.</RimScentExtended_Scent_Ocean.stages.sea_air.description>
 
   <!-- EN: stagnant water -->
   <RimScentExtended_Scent_Stagnant.stages.stagnant_water.label>eau stagnante</RimScentExtended_Scent_Stagnant.stages.stagnant_water.label>
