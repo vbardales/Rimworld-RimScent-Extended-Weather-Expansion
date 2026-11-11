@@ -8,8 +8,7 @@ packageId:    nelim.rimscent.extended.weather
 repo:         Rimworld-RimScent-Extended-Weather-Expansion
 visibility:   public
 detached:     no
-stage:
-  dansMonoRepo
+workflow_stage: setupRepo
 licence:      open
 licence_at:   the same MIT base as RimScent Extended
 dependencies: declared
@@ -17,13 +16,18 @@ showcase:     complete
 tested_on:
 workshop:
 remaining:
-  - defect: not an autonomous Git repository; the configured rimscent-weather remote exists only in the parent monorepo
+  - "2026-11-11: replay stops at setupRepo. 1.a unverified: duplicate-mod search not run (needs owner OK for Search-Workshop)"
+  - "2026-11-11: 1.f/1.i defect: local .git has 6 commits on main and no remote; GitHub repo vbardales/Rimworld-RimScent-Extended-Weather-Expansion is public and not empty, history unknown, nothing pushed"
+  - "2026-11-11: 1.h defect: STATUS.md front matter lacks remote and upstream_mod_remotes; detached: no is stale"
+  - "2026-11-11: 1.j: Check-Status ERROR cleared by workflow_stage; WARN left: em dash in Mod/About/About.xml, no <url> in About.xml"
+  - "2026-11-11: defect: Mod/LICENSE differs from root LICENSE; root TEST_SCENARIOS.md, Art/echo.png and Art/ModIcon-signature-candidate.png are off the closed lists"
   - defect: About.xml has neither a <url> nor the required final [url=...]Source code on GitHub[/url] description link
   - unverified: no in-game check that this Defs-and-patches-only mod exposes neither an empty Mod options page nor a MainButtons shortcut
   - unverified: no functional or Pickle test suite/results; weather, terrain, DLC and VEE patch behaviour remains untested in game
   - unverified: English and French display has not been checked in game
 session:      audit:      2026-09-22, static evidence review
-updated:      2026-09-22, static audit
+updated:      2026-11-11, replay-audit
+protocols_read_sha: d454cebad7bf5d49ad97a9ab5655f7de42e585ad
 ---
 
 # RimScent Extended: Weather Expansion — status
