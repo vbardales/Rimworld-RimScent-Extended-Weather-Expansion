@@ -9,7 +9,7 @@ repo:         Rimworld-RimScent-Extended-Weather-Expansion
 visibility:   public
 remote:       https://github.com/vbardales/Rimworld-RimScent-Extended-Weather-Expansion.git
 detached:     yes
-workflow_stage: declareDependencies[1.0.0]
+workflow_stage: localize[1.0.0]
 licence:      open
 licence_at:   the same MIT base as RimScent Extended
 upstream_mod_remotes:
@@ -20,8 +20,8 @@ showcase:     complete
 tested_on:
 workshop:
 remaining:
-  - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage declareDependencies[1.0.0]. 1.a done: Search-Workshop on About.xml, no duplicate mod"
-  - "2026-11-11: 4.a/4.e/4.g done (Workshop id added, OptionalCompat.xml created, dependency record written); 2.a note: Art/ModIcon-source.png is only 106x89"
+  - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage localize[1.0.0]. 1.a done: Search-Workshop on About.xml, no duplicate mod"
+  - "2026-11-11: 6.g unverified: Virginie review of the French (22 texts, TRANSLATION_REVIEW.md) not done, translation_fr stays unchecked; 2.a note: Art/ModIcon-source.png is only 106x89"
   - "2026-11-11: 1.i done: local history rebased onto origin/main (add/add conflicts kept local version) and pushed, a38eb63"
   - "2026-11-11: 1.j: Check-Status ERROR cleared by workflow_stage; WARN left: em dash in Mod/About/About.xml, no <url> in About.xml"
   - "2026-11-11: defect: Mod/LICENSE differs from root LICENSE; root TEST_SCENARIOS.md, Art/echo.png and Art/ModIcon-signature-candidate.png are off the closed lists"
