@@ -31,7 +31,7 @@ remaining:
   - unverified: English and French display has not been checked in game
 session:      audit:      2026-09-22, static evidence review
 updated:      2026-11-11, replay-audit
-protocols_read_sha: 90f509b03221430d3fcfeff3d7b5bc475ddc1131
+protocols_read_sha: ac4114f1491f18329efb742dc7755f21a1f6e9bc
 ---
 
 # RimScent Extended: Weather Expansion — status
