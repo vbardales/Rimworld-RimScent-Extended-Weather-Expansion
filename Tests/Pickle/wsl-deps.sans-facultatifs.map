@@ -1,3 +1,5 @@
 # Hard dependencies resolved for the minimal pass; no optional integration is activated.
 reo.RimScent 3645569466
 nelim.rimscent.extended path:RimScentExtended/Mod
+# Steps of the weather and condition scenarios (weather set, game condition started, waits in place).
+nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod
