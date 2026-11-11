@@ -9,7 +9,7 @@
   <!-- EN: sweltering air -->
   <RimScentExtended_Scent_Swelter.stages.sweltering_air.label>air étouffant</RimScentExtended_Scent_Swelter.stages.sweltering_air.label>
   <!-- EN: Hot, still, heavy air that smells of sweat and baked dust. Every breath feels used. -->
-  <RimScentExtended_Scent_Swelter.stages.sweltering_air.description>Un air chaud, immobile et lourd, qui sent la sueur et la poussière cuite. Chaque inspiration semble déjà servie.</RimScentExtended_Scent_Swelter.stages.sweltering_air.description>
+  <RimScentExtended_Scent_Swelter.stages.sweltering_air.description>Un air chaud, immobile et lourd, qui sent la sueur et la poussière cuite. Chaque inspiration semble avoir déjà servi.</RimScentExtended_Scent_Swelter.stages.sweltering_air.description>
 
   <!-- EN: alien blossom -->
   <RimScentExtended_Scent_PsychicBloom.stages.alien_blossom.label>floraison étrangère</RimScentExtended_Scent_PsychicBloom.stages.alien_blossom.label>
@@ -39,7 +39,7 @@
   <!-- EN: fresh water -->
   <RimScentExtended_Scent_Water.stages.fresh_water.label>eau douce</RimScentExtended_Scent_Water.stages.fresh_water.label>
   <!-- EN: Cool water and wet stone. Clean, and it carries a long way. -->
-  <RimScentExtended_Scent_Water.stages.fresh_water.description>De l'eau fraîche et de la pierre mouillée. Propre, et ça porte loin.</RimScentExtended_Scent_Water.stages.fresh_water.description>
+  <RimScentExtended_Scent_Water.stages.fresh_water.description>De l'eau fraîche et de la pierre mouillée. Propre, et l'odeur porte loin.</RimScentExtended_Scent_Water.stages.fresh_water.description>
 
   <!-- EN: sea air -->
   <RimScentExtended_Scent_Ocean.stages.sea_air.label>air marin</RimScentExtended_Scent_Ocean.stages.sea_air.label>

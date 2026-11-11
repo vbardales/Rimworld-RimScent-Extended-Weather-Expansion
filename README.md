@@ -65,7 +65,7 @@ petrichor, plus `ToxicFallout` and `VolcanicWinter`. Nothing here duplicates the
 |---|---|
 | dry thunderstorm, lightning storm | ozone, +1 |
 | snow, blizzard, cold snap, deep freeze | cold clean air, +1 |
-| heat wave, unnatural heat, heat vents | stifling air, −2 |
+| heat wave, unnatural heat, heat vents | sweltering air, −2 |
 | drought (Odyssey) | parched air, −2 |
 | bioluminescent spores (Odyssey) | spores, −1 |
 | torrential rain (Odyssey) | **reuses** `RimScent_PetrichorScent` |
