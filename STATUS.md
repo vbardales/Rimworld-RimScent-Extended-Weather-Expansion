@@ -82,8 +82,8 @@ distributed description, has no functional or Pickle evidence, and has never bee
   thoughts by name and needs the `ModExtension_TerrainScent` of the Extended base.
 - Optional integration: Vanilla Events Expanded `vanillaexpanded.vee` (Workshop 1938420742), in
   `loadAfter`, folder `VEE` gated by `IfModActive`, declared in `Mod/About/OptionalCompat.xml`
-  (kind patch). `Check-OptionalCompat.ps1`: OK, 0 patched targets, 1 declared (it does not read the
-  folder gate; script gap reported to Audit).
+  (kind patch). `Check-OptionalCompat.ps1`: OK, 0 patched targets, 1 declared (the INFO "no patch targets it" is expected: the
+  gate is also in `loadAfter`, so it counts as ordered, Audit 2026-11-11).
 - DLC: Royalty, Ideology, Biotech, Anomaly and Odyssey defs are patched without `MayRequire`:
   a conditional operation whose xpath matches nothing does nothing. `supportedVersions` 1.6.
 - No incompatibility declared. No animal added.
