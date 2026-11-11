@@ -21,7 +21,7 @@ tested_on:
 workshop:
 remaining:
   - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage playTests[1.0.0]. 1.a done: Search-Workshop on About.xml, no duplicate mod"
-  - "2026-11-11: playTests open: 8.c initial Pickle tickets (01 minimal, 02 VEE) not run; 8.g scenarios S2 to S9 wait for terrain, weather and temperature steps requested from PickleTools; 8.m code review; 8.l tested_on empty; 2.a note: Art/ModIcon-source.png is only 106x89"
+  - "2026-11-11: playTests open: tickets 20261111-180427-554-8bff (minimal) and 20261111-180430-089-aa63 (VEE) queued at fd8c213, wait RUN_DONE from TM; then triage Inbox/initial-minimal and Inbox/initial-vee. PiT added the steps for S2 to S8 (1c5ad1e): terrain floor set, weather set at once, game condition started, map temperature, decor placed; write Gherkin for S2 to S8 only after RUN_DONE (the tickets stage the working tree), one small ticket per scenario. 8.m code review open; 8.l tested_on empty; 2.a note: Art/ModIcon-source.png is only 106x89"
   - "2026-11-11: 1.i done: local history rebased onto origin/main (add/add conflicts kept local version) and pushed, a38eb63"
   - "2026-11-11: 1.j: Check-Status ERROR cleared by workflow_stage; WARN left: em dash in Mod/About/About.xml, no <url> in About.xml"
   - "2026-11-11: defect: Mod/LICENSE differs from root LICENSE; root TEST_SCENARIOS.md, Art/echo.png and Art/ModIcon-signature-candidate.png are off the closed lists"
