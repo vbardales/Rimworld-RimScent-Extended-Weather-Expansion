@@ -13,7 +13,7 @@ tree or a launcher archive into this mod.
 Before replacing evidence, list the files being removed and retained; repoint
 `STATUS.md` first if it names a removed file.  Delete superseded reports from
 disk after that check.  Record each retained run as one text line in
-`docs/runs/`, including date, tested revision, scenario, verdict and local
+`Docs/runs/`, including date, tested revision, scenario, verdict and local
 evidence path.  Never commit runtime captures, `Player.log`, archives or
 generated `.dds` textures.
 
