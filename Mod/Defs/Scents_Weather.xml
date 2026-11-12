@@ -166,7 +166,7 @@
     <stages>
       <li>
         <label>hot spring</label>
-        <description>Warm mineral steam, faintly of sulphur and iron. It smells like somewhere worth stopping.</description>
+        <description>Warm mineral steam, faintly scented with sulphur and iron. It smells like somewhere worth stopping.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
     </stages>
