@@ -21,6 +21,7 @@ tested_on:
 workshop:
 remaining:
   - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage playTests[1.0.0]. 1.a done: Search-Workshop on About.xml, no duplicate mod"
+  - "2026-11-12: French review rerun (2 ChatGPT passes, 1 fix: sea_air description, commit after 311f872) validated by Virginie; translation_fr complete"
   - "2026-11-12: a353 RUN_DONE green (1 passed): S8 03 to 06 all green; triaged: Evidence/s8-ozone-3, Docs/runs/2026-11-12-s8-weather.md, Inbox s8-weather deleted. Next: S2 to S7 terrain scenarios (one ticket each), S8 DLC rows, 8.m code review"
   - "2026-11-12: S8 ozone cause found (d7a3, f41c): Jet stood on soil with RimScent_DirtScent (-1); ozone +1 tied at magnitude 1 and the ground scent wins ties (ScentScan keeps the first, terrain scanned before weather). Fix d701eae: ozone +2 (Defs, README, SCENARIOS, Test-Xml). Ticket 20261112-145437-305-a353 (ozone alone, Inbox s8-ozone-3). Open design note: any weather scent of |1| (cold air, spores) loses to a ground scent of |1|; cold air passed because of snow cover, unverified"
   - "2026-11-12: S8 f1bc RED 3/4: 04 cold air, 05 swelter, 06 drought green; 03 ozone failed (Jet does not feel RimScentExtended_Scent_Ozone after 600 ticks of DryThunderstorm, set at once; patch shape identical to green SnowHard; ozone was the first scenario of the run, cause unknown). Refiled alone: ticket 20261112-143021-784-d7a3 (evidence Tests/Pickle/Inbox/s8-ozone). Inbox s8-weather kept until triage (green 04-06 to Evidence, red 03 parked or deleted)"
