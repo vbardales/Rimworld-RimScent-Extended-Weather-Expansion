@@ -1,0 +1,1 @@
+2026-11-12 ticket 20261112-183957-408-5b4c, set sans-facultatifs, rev bfd2c0f: S2 fresh water (WaterShallow, Jet feels RimScentExtended_Scent_Water after 600 ticks), 1 passed, 0 failed. Evidence/s2-fresh-water.
