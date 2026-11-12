@@ -21,6 +21,7 @@ tested_on:
 workshop:
 remaining:
   - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage playTests[1.0.0]. 1.a done: Search-Workshop on About.xml, no duplicate mod"
+  - "2026-11-12: S8 ozone cause found (d7a3, f41c): Jet stood on soil with RimScent_DirtScent (-1); ozone +1 tied at magnitude 1 and the ground scent wins ties (ScentScan keeps the first, terrain scanned before weather). Fix d701eae: ozone +2 (Defs, README, SCENARIOS, Test-Xml). Ticket 20261112-145437-305-a353 (ozone alone, Inbox s8-ozone-3). Open design note: any weather scent of |1| (cold air, spores) loses to a ground scent of |1|; cold air passed because of snow cover, unverified"
   - "2026-11-12: S8 f1bc RED 3/4: 04 cold air, 05 swelter, 06 drought green; 03 ozone failed (Jet does not feel RimScentExtended_Scent_Ozone after 600 ticks of DryThunderstorm, set at once; patch shape identical to green SnowHard; ozone was the first scenario of the run, cause unknown). Refiled alone: ticket 20261112-143021-784-d7a3 (evidence Tests/Pickle/Inbox/s8-ozone). Inbox s8-weather kept until triage (green 04-06 to Evidence, red 03 parked or deleted)"
   - "2026-11-12: translation_fr set back to pending_review at the TM order (owner via Audit, AUDIT 6.g): /review-translation is not runnable by the session, Virginie must type it; ChatGPT reviews of 2026-11-11 (a3d2cd5, aaa3cb6) were read and applied but the 3 rejected suggestions of the first review were not logged, so Docs/review-refusals.md cannot be written for them. Order when she answers: all corrections, regenerate TRANSLATION_REVIEW.md once, commit, then pages 1..N on the frozen text"
   - "2026-11-12: S8 features 03 to 06 (ozone, cold air, swelter, drought) written, Check-Steps clean, pushed fb50528; ticket 20261112-001240-420-f1bc queued (evidence Tests/Pickle/Inbox/s8-weather, map sans-facultatifs + ColonistRace): wait RUN_DONE from TM, triage. Next after it: S2 to S7 terrain scenarios (one ticket each), S8 DLC rows (Spores, reused thoughts), then 8.m code review. French validated by Virginie at aaa3cb6, translation_fr complete"
@@ -33,7 +34,7 @@ remaining:
   - unverified: no functional or Pickle test suite/results; weather, terrain, DLC and VEE patch behaviour remains untested in game
   - unverified: English and French display has not been checked in game
 session:      audit:      2026-09-22, static evidence review
-updated:      2026-11-12, S8 ozone red (f1bc), ozone alone refiled d7a3, translation_fr back to pending_review
+updated:      2026-11-12, ozone +2 fix, ticket a353 queued
 protocols_read_sha: 9481d090854f082b638e84ad647a202fec7de6d2
 ---
 
