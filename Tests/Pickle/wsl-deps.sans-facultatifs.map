@@ -3,3 +3,5 @@ reo.RimScent 3645569466
 nelim.rimscent.extended path:RimScentExtended/Mod
 # Steps of the weather and condition scenarios (weather set, game condition started, waits in place).
 nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod
+# Steps of the terrain scenarios (floor laid).
+nelim.pickletools.stagedecor path:PickleTools/StageDecor/Mod
