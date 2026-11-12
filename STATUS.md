@@ -3,6 +3,7 @@ settings_audit: partial
 localization: complete
 translation_en: complete
 translation_fr: pending_review
+french_review_pending: true
 mod:          RimScent Extended: Weather Expansion
 packageId:    nelim.rimscent.extended.weather
 repo:         Rimworld-RimScent-Extended-Weather-Expansion
