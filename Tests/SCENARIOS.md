@@ -41,7 +41,7 @@ no forest scent.
 ## S8 Weather and conditions
 | Trigger | Thought | Mood |
 |---|---|---|
-| `DryThunderstorm`, `Flashstorm` | `RimScentExtended_Scent_Ozone` | +1 |
+| `DryThunderstorm`, `Flashstorm` | `RimScentExtended_Scent_Ozone` | +2 |
 | `SnowGentle`, `SnowHard`, `Blizzard`, `ColdSnap`, `DeepFreeze` | `RimScentExtended_Scent_ColdAir` | +1 |
 | `HeatWave`, `UnnaturalHeat`, `HeatVentHeat` | `RimScentExtended_Scent_Swelter` | -2 |
 | `Drought`, `DroughtInitial` | `RimScentExtended_Scent_Drought` | -2 |

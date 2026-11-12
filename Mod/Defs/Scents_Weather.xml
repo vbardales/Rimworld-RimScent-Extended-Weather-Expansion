@@ -67,7 +67,7 @@
       <li>
         <label>ozone</label>
         <description>Sharp and metallic, the smell of a storm that has not broken yet.</description>
-        <baseMoodEffect>1</baseMoodEffect>
+        <baseMoodEffect>2</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>

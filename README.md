@@ -63,7 +63,7 @@ petrichor, plus `ToxicFallout` and `VolcanicWinter`. Nothing here duplicates the
 
 | Target | Smell |
 |---|---|
-| dry thunderstorm, lightning storm | ozone, +1 |
+| dry thunderstorm, lightning storm | ozone, +2 |
 | snow, blizzard, cold snap, deep freeze | cold clean air, +1 |
 | heat wave, unnatural heat, heat vents | sweltering air, −2 |
 | drought (Odyssey) | parched air, −2 |
