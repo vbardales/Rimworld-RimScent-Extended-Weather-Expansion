@@ -2,10 +2,10 @@
 
 The air outside, and the ground it rests on. For RimWorld 1.6.
 
-## Terrain — new ground for RimScent
+## Terrain, new ground for RimScent
 
-RimScent only reads the `thingGrid`: things sitting on cells. **Terrain is not a thing** — water,
-marsh, sand and ice have no `ThingDef` — so none of what makes a place smell the way it does was
+RimScent only reads the `thingGrid`: things sitting on cells. **Terrain is not a thing**, water,
+marsh, sand and ice have no `ThingDef`, so none of what makes a place smell the way it does was
 reachable.
 
 The base mod gained `ModExtension_TerrainScent` for this, and `ScentScan` reads the terrain grid on
@@ -35,7 +35,7 @@ it is around you", for free.
 ## The forest
 
 Every tree, through the **`plant/treeCategory`** marker the game already uses to tell a tree from
-a plant — not through a hand-written list. Since patch operations apply to raw XML, before
+a plant, not through a hand-written list. Since patch operations apply to raw XML, before
 inheritance is resolved, targeting `TreeBase` is enough and covers all its children at once, mods
 included. A mod that declares its own tree parent is caught by the same xpath without being named.
 
@@ -47,11 +47,11 @@ the bonsai is a piece of indoor decoration.
 ### The limit of the approach, accepted
 
 Declaring your own `treeCategory` rather than inheriting from `TreeBase` is common among mods:
-across the mods installed here, some sixty files do it. That is what makes the criterion useful —
+across the mods installed here, some sixty files do it. That is what makes the criterion useful -
 those trees are caught without being named, and so will the next mod installed, with no update.
 
 It is also the limit. **A modded cursed tree will smell of pleasant forest**, since there is no way
-to tell it apart other than by naming it — and naming is precisely what this patch refuses to do.
+to tell it apart other than by naming it, and naming is precisely what this patch refuses to do.
 The six vanilla exclusions are a special case, justified by being finite and known; there is no
 equivalent for mods. If an awkward case shows up in play, the exclusion is one more
 `not(defName="…")`.
@@ -88,7 +88,7 @@ unnatural darkness. A changing sky smells of nothing, and inventing one for it w
 ## What is not here, and why
 
 **Pheromones.** On a neighbouring pawn RimScent reads only `HediffDef`s, and no vanilla hediff
-marks them. A scent put on `Human` would simply be permanent for every colony — exactly what the
+marks them. A scent put on `Human` would simply be permanent for every colony, exactly what the
 `ModExtension_PawnScent` threshold exists to avoid. It would need a trigger: not ruled out, just
 waiting for an honest hook.
 
@@ -96,17 +96,17 @@ waiting for an honest hook.
 (`RimScent_BadHygiene`). Nothing to add.
 
 **Illness on the breath.** RimScent reads a neighbour's hediffs, so patching diseases would work
-natively, without a line of code. But that is decay, not weather — it belongs to **Decay
+natively, without a line of code. But that is decay, not weather, it belongs to **Decay
 Expansion**, which already carries sickroom air.
 
 ## Requirements
 
 - [RimScent](https://steamcommunity.com/sharedfiles/filedetails/?id=3645569466)
-- RimScent Extended (the base mod) — it is what carries `ModExtension_TerrainScent`
+- RimScent Extended (the base mod), it is what carries `ModExtension_TerrainScent`
 
 Vanilla Events Expanded is not required: its section loads only if it is active, through
 `LoadFolders.xml`. Nothing is written to the save.
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE) and [ATTRIBUTION.md](ATTRIBUTION.md).
+MIT, see [LICENSE](LICENSE) and [ATTRIBUTION.md](ATTRIBUTION.md).
