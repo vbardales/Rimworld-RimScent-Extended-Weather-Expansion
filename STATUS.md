@@ -22,6 +22,7 @@ workshop:
 remaining:
   - "2026-11-11: setupRepo closed (1.h upstream_mod_remotes set, ocarina0001/rimscent); stage playTests[1.0.0]. 1.a done: Search-Workshop on About.xml, no duplicate mod"
   - "2026-11-12: S2 fresh water written (07-terrain-fresh-water.feature: WaterShallow laid 112,201 to 116,205, Jet at 114,203; StageDecor added to wsl-deps.sans-facultatifs.map), Check-Steps clean, pushed bfd2c0f; ticket 20261112-183957-408-5b4c queued (evidence Tests/Pickle/Inbox/s2-fresh-water): wait RUN_DONE, then triage. Next: S3 to S7 one ticket each"
+  - "2026-11-12: S3 ocean written (08-terrain-ocean.feature, WaterOceanShallow, same cells as S2), Check-Steps clean, pushed d0e264e; ticket 20261112-184709-521-8070 queued (evidence Tests/Pickle/Inbox/s3-ocean): wait RUN_DONE, then triage. Next: S4 (stagnant, two temperatures), S5 to S7"
   - "2026-11-12: 5b4c RUN_DONE green (S2 fresh water, 1 passed): triaged to Evidence/s2-fresh-water, Docs/runs/2026-11-12-bfd2c0f-s2-fresh-water.md, Inbox empty. Next: S3 (sea) to S7, one ticket each"
   - "2026-11-12: French review rerun (2 ChatGPT passes, 1 fix: sea_air description, commit after 311f872) validated by Virginie; translation_fr complete"
   - "2026-11-12: a353 RUN_DONE green (1 passed): S8 03 to 06 all green; triaged: Evidence/s8-ozone-3, Docs/runs/2026-11-12-s8-weather.md, Inbox s8-weather deleted. Next: S2 to S7 terrain scenarios (one ticket each), S8 DLC rows, 8.m code review"
