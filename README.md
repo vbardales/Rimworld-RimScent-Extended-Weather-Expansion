@@ -8,7 +8,7 @@ RimScent only reads the `thingGrid`: things sitting on cells. **Terrain is not a
 marsh, sand and ice have no `ThingDef` — so none of what makes a place smell the way it does was
 reachable.
 
-The socle gained `ModExtension_TerrainScent` for this, and `ScentScan` reads the terrain grid on
+The base mod gained `ModExtension_TerrainScent` for this, and `ScentScan` reads the terrain grid on
 the same cells it already walks: an indexed lookup, with no extra traversal cost.
 
 | Terrain | Smell | Mood |
@@ -22,7 +22,7 @@ the same cells it already walks: an indexed lookup, with no extra traversal cost
 | mossy ground, glowforest floor | the same smell as the trees | +2 |
 
 **Marsh only smells above 18 °C.** It is the temperature that makes a swamp smell, not the swamp.
-Below the threshold the cell does not count at all — which is distinct from the socle's global
+Below the threshold the cell does not count at all, which is distinct from the base mod's global
 temperature factor: that one damps a smell that is present, this one decides it does not exist.
 
 ### Counting per cell
@@ -102,7 +102,7 @@ Expansion**, which already carries sickroom air.
 ## Requirements
 
 - [RimScent](https://steamcommunity.com/sharedfiles/filedetails/?id=3645569466)
-- RimScent Extended (the socle) — it is what carries `ModExtension_TerrainScent`
+- RimScent Extended (the base mod) — it is what carries `ModExtension_TerrainScent`
 
 Vanilla Events Expanded is not required: its section loads only if it is active, through
 `LoadFolders.xml`. Nothing is written to the save.
