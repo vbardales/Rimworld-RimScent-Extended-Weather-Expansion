@@ -36,7 +36,7 @@ remaining:
   - unverified: English and French display has not been checked in game
 session:      audit:      2026-09-22, static evidence review
 updated:      2026-11-12, S8 weather 03 to 06 all green (a353), triaged
-protocols_read_sha: 9481d090854f082b638e84ad647a202fec7de6d2
+protocols_read_sha: 1f10122b36823f85ebfd4dbd9413573677e1ba7b
 ---
 
 # RimScent Extended: Weather Expansion — status
