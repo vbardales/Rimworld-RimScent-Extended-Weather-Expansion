@@ -16,3 +16,5 @@ Art/.render/
 desktop.ini
 Thumbs.db
 .DS_Store
+Tests/Pickle/Inbox/
+Tests/Pickle/Parked/
